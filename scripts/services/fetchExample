@@ -1,0 +1,92 @@
+const axios = require('axios');
+
+// Exercise 1: Name and height of Bulbasaur
+
+async function getBulbasaurData() {
+    try {
+        const URL = 'https://pokeapi.co/api/v2/pokemon/bulbasaur';
+        console.log("Loading... Please wait."); // Feedback to the user
+        const response = await axios.get(URL); // PROMISE IS CREATED AS 'PENDING'
+        // PROMISE IS FULFILLED
+        console.log("My Pokemon's name is " + response.data.name);
+        console.log(response.data.name + " has a height of " + response.data.height);
+    } catch (error) {
+        // PROMISE IS REJECTED
+        console.log("ERROR: " + error);
+    } finally {
+        console.log("Loading complete! Thank you for using my app!");
+    }
+}
+
+ getBulbasaurData();
+
+// Exercise 2: Name and cost of the first item
+
+async function getFirstItem() {
+    const URL = 'https://pokeapi.co/api/v2/item/1/';
+    try {
+        const response = await axios.get(URL);
+        console.log("The name of the first item is " + response.data.name + ".");
+        console.log("The price of the first item is " + response.data.cost + ".");
+    } catch(error) {
+        console.log("ERROR: " + error);
+    } finally {
+        console.log("Goodbye!")
+    }
+}
+
+ getFirstItem();
+
+// Exercise 3: Fetch type data by ID and log the type name and its damage relations.
+
+/*
+
+1. Create an async function
+2. Make a GET Request to the types endpoint from the Pokemon API
+3. Save the data from the response in a variable.
+4. Print the name of the type
+5. Access the damage_relations object from my response.
+6. Access the array inside damage_relations for each relationship. (6 arrays)
+7. For each array, print the information regarding the type.
+
+*/
+
+async function getTypeDamageRelations(typeID) {
+    console.log(typeID); // This would print 10
+
+    try {
+        const response = await axios.get(`https://pokeapi.co/api/v2/type/${typeID}/`)
+        // By using a template string, I am able to alter my endpoint and specify the ID
+        // that I want to fetch.
+        // RESULT" https://pokeapi.co/api/v2/type/10/
+        const data = response.data;
+        console.log("The ability obtained is called " + data.name + ".");
+        console.log("-- Damage Relations --");
+        console.log("Double Damage From:")
+
+        const doubleDamageArray = data.damage_relations.double_damage_from;
+        doubleDamageArray.forEach(item => {
+            console.log(item.name);
+        });
+
+        console.log("Double Damage To: " + data.damage_relations.double_damage_to.map(item => item.name).join(", "));
+        console.log("Half Damage From: " + data.damage_relations.half_damage_from.map(item => item.name).join(" | "));
+        console.log("Half Damage To: " + data.damage_relations.half_damage_to.map(item => item.name).join(" ** "));
+
+        if (data.damage_relations.no_damage_from.length == 0) {
+            console.log("No Damage From: No Results");
+        } else {
+            console.log("No Damage From: " + data.damage_relations.no_damage_from.map(item => item.name).join(" & "));
+        }
+
+        // Alternative if else notation - only to be used with very simple operations.
+        console.log("No Damage To: " + (data.damage_relations.no_damage_to.length > 0 ?
+            data.damage_relations.no_damage_to.map(item => item.name).join(", ") : "No Results" ));
+    } catch (error) {
+        console.log("ERROR: " + error);
+    }
+
+}
+
+const id = 10;
+getTypeDamageRelations(id);

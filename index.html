@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 6 Assignments</title>
+
+    <!-- styles-->
+    <link rel="stylesheet" href="./styles/styles.css">
+
+    <!-- axios install, goes in head so it doesn't show up in the body and comes before the other js files so it all works correctly since they need to look to axios as part of the functions--->
+     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+</head>
+<body>
+    <h1>Pokemon Searcher</h1>
+
+    <form class="mainForm">
+        <div class="mainForm__input" id="mainForm">
+        <label for ="pokemonSearch">Search the PokeAPI for info about your favorite pokemon!</label>
+    <input type ="text" name="pokemonSearch" id="pokemonSearchInput">
+    </div>
+
+    <button class="mainForm__submit" id="formSubmit" type="submit">Search for Pokemon</button>
+    </form>
+
+<div id="content" class="content"> Please saerch for a pokemon to dispaly it's information here!</div>
+    <!-- js files-->
+    <!-- Wk 6 JS Practice Assignment file-->
+    <script src="./scripts/utilities/wk6practice.js" type="module"> </script>
+
+    <!-- service file with api functions-->
+     <script src ="./script/services/getPokemonService.js" type="module"> </script> <!-- module is needed so we can import/export between js files so it works in the browser-->
+
+     <!-- main file that calls and displays data on the page-->
+    <script src="./scripts/main.js"> </script>
+</body>
+</html>
