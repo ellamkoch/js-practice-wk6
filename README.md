@@ -91,7 +91,6 @@ Students will implement a search bar with a button, handle API requests using Ax
 
 ### Overview
 When a user types a Pokémon name or ID and presses Search, the app:
-
 1. Sends an Axios `GET` request to `https://pokeapi.co/api/v2/pokemon/{name-or-id}`
 2. Shows a centered spinner while the request loads
 3. Replaces the spinner with a dynamically generated Pokémon card containing:
@@ -135,3 +134,6 @@ styles.css — Handles layout and theme:
 -How to handle API errors gracefully and give user feedback.
 -How to create a simple loading spinner and show/hide it during requests.
 -The value of adding concise helper comments to make code easier to follow.
+
+### Future Improvements
+I didn't use bootstrap on this one to save time. I'd like to play with it in the future to see how it works more. 
