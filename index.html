@@ -13,26 +13,32 @@
 
 </head>
 <body>
-    <h1>Pokemon Searcher</h1>
+    <h1 class="title">Pokemon Searcher</h1>
 
-    <form class="mainForm">
-        <div class="mainForm__input" id="mainForm">
-        <label for ="pokemonSearch">Search the PokeAPI for info about your favorite pokemon!</label>
-    <input type ="text" name="pokemonSearch" id="pokemonSearchInput">
-    </div>
+    <form class="mainForm" id="mainForm">
+    <label for="pokemonSearchInput" class="pokemonSearch">Search the PokeAPI for info about your favorite pokemon!</label>
+    <input type="text" name="pokemonSearch" id="pokemonSearchInput" required placeholder="Enter Pokemon Name or ID">
+
 
     <button class="mainForm__submit" id="formSubmit" type="submit">Search for Pokemon</button>
     </form>
 
-<div id="content" class="content"> Please saerch for a pokemon to dispaly it's information here!</div>
+<!--container for results and content. msg will hide once pokemon are searched for. -->
+<div id="content" class="content"></div>
+<p class="content-text" id="content-text"> Please search for a pokemon to display it's information here!</p>
+<!-- spinner container shows briefly. -->
+<div id="loading__spinner" class="loading__spinner hidden" aria-live="polite"></div>
+
+
     <!-- js files-->
     <!-- Wk 6 JS Practice Assignment file-->
     <script src="./scripts/utilities/wk6practice.js" type="module"> </script>
 
     <!-- service file with api functions-->
-     <script src ="./script/services/getPokemonService.js" type="module"> </script> <!-- module is needed so we can import/export between js files so it works in the browser-->
-
+    <script src ="./scripts/services/getPokemonService.js" type="module"> </script> <!-- module is needed so we can import/export between js files so it works in the browser-->
+    <!--js file that creates cards after pokemon in question is searched for w/ info and pic indicated in this pg from the api-->
+    <script src="./scripts/components/renderPokemonResponse.js" type="module"> </script>
      <!-- main file that calls and displays data on the page-->
-    <script src="./scripts/main.js"> </script>
+    <script src="./scripts/main.js" type="module"> </script>
 </body>
 </html>

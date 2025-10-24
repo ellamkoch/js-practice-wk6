@@ -73,3 +73,65 @@ Postman was especially helpful for:
 This repo is still a work in progress. I plan to update the other files and take out my notes and finish the rest of the Fetch and Async assignment for this week.
 
 For now, everything runs correctly inside wk6practice.js and can be seen within the console of the index.html file and meets all assignment requirements.
+
+## Fetch and Async Assignment - Pokemon Finder
+
+### Objective
+In this assignment, students will build a Pokémon Searcher that allows users to look up Pokémon by entering a name or ID. The application will fetch data from the PokéAPI and display relevant details such as the Pokémon’s name, ID, weight, height, types, and image inside a Bootstrap card.
+
+Students will implement a search bar with a button, handle API requests using Axios and async/await, and dynamically update the UI using JavaScript DOM manipulation.
+
+### Files
+-index.html
+-styles/styles.css
+-scripts/main.js
+-scripts/services/getPokemonService.js
+-scripts/components/renderPokemonResponse.js
+-Pokemon_Solid.ttf - font family for the title
+
+### Overview
+When a user types a Pokémon name or ID and presses Search, the app:
+
+1. Sends an Axios `GET` request to `https://pokeapi.co/api/v2/pokemon/{name-or-id}`
+2. Shows a centered spinner while the request loads
+3. Replaces the spinner with a dynamically generated Pokémon card containing:
+   -Sprite image
+   -Name and ID
+   -Weight
+   -Height
+   -List of types
+4. Displays a red error message if the API call fails
+
+All JavaScript is organized using best practices learned from Ulises to keep code clean and readable.
+
+### How It Works
+index.html — Loads Axios from a CDN and links each module with `type="module"`.
+- Includes the form, search input, button, spinner, and an empty content area for results.
+
+main.js — Handles form submission and the overall flow:
+-Hides the “please search” message when a search begins
+-Shows the spinner while waiting for the API
+-Calls `getPokemonAPI()`
+-Passes the result to `renderPokemonResponse()` for display
+-Hides the spinner again after loading
+
+getPokemonService.js — Contains the async Axios function that fetches Pokémon data.
+-Returns an object with `success` and either `data` or `error` so other files can easily check the result.
+
+renderPokemonResponse.js — Builds the HTML for the Pokémon card based on API data.
+-Converts the Pokémon’s `types` array into a readable comma-separated list and injects the result into the page.
+
+styles.css — Handles layout and theme:
+-Custom Pokémon title font
+-Diagonal red-to-gray gradient background
+-Centered, styled form and button
+-Smooth spinner animation
+-Card layout with shadow and hover contrast
+
+### Lessons Learned
+-How to split logic into separate modules (`services`, `components`, and main app).
+-More practice with Axios with async/await for cleaner asynchronous code.
+-More practice to manipulate the DOM dynamically with `innerHTML`.
+-How to handle API errors gracefully and give user feedback.
+-How to create a simple loading spinner and show/hide it during requests.
+-The value of adding concise helper comments to make code easier to follow.

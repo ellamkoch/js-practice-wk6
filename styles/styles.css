@@ -1,7 +1,156 @@
+/*custom title font, free pokemon replica font - https://www.fontbolt.com/font/pokemon-font/*/
+@font-face {
+    font-family: 'PokemonSolid';
+    src: url('../Fonts/Pokemon_Solid.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+/* global styles*/
+body {
+    background: linear-gradient(180deg, #3d3d3d 0%, #a72727 100%);
+    background-attachment: fixed;
+    font-family: Roboto, sans-serif;
+    color: #ffcb05;
+    margin: 0;
+    padding: 0;
+}
 .title {
-    font-family: Roboto, sans serif;
+    text-align: center;
+    font-family: 'PokemonSolid', sans-serif;
+    font-size: 4rem;
+    color: #ffcb05;
+    -webkit-text-stroke: 2px #4e5fdc;
+    text-shadow: 3px 3px 6px rgba(234, 212, 212, 0.631);
+    letter-spacing: 5px;
+    margin: 24px 0 8px;
 }
 
+/*form styles*/
 .mainForm {
-    
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto 1rem;
+    gap: 2rem;
+    margin-bottom: 2rem;
+
+
+}
+.pokemonSearch {
+    font-size: 2rem;
+    color: #ffdb72;
+    margin-top: 6px;
+}
+
+#pokemonSearchInput {
+    width: 100%;
+    max-width: 600px;       /* was 500 — wider */
+    height: 44px;           /* fixed height = tall bar */
+    padding: 0 14px;        /* inner left/right space */
+    font-size: 1.1rem;      /* bigger typing text */
+    border: 2px solid #d1d5db;
+    border-radius: 10px;
+    outline: none;
+    background: #fff;
+    color: #1f2937;
+    margin-bottom: 0.9rem;  /* gap before the button */
+    transition: border-color .15s ease, box-shadow .15s ease;
+}
+/* submit button styles*/
+.mainForm__submit {
+  padding: 12px 18px;
+  font-size: 1.05rem;
+  border: none;
+  border-radius: 10px;
+  background: #3b82f6;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform .05s ease, background-color .15s ease, box-shadow .15s ease;
+  box-shadow: 0 6px 14px rgba(59,130,246,.25);
+}
+
+.mainForm__submit:hover { background: #2563eb; }
+.mainForm__submit:active { transform: translateY(1px); }
+
+.content {
+    width: 100%;
+    max-width: 720px;
+    margin: 10px auto 24px;
+    text-align: center;
+}
+
+#content-text {
+  margin: 6px auto 0;
+  width: 100%;
+  max-width: 720px;
+  text-align: center;
+  color: #ffdb72;
+  font-size: 1.3rem;
+}
+
+/* spinner styles*/
+.loading__spinner {
+    display: none; /*hides spinner initially*/
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    animation: spin 2s linear infinite; /* Apply the spin animation */
+    margin: 1.5rem auto;
+}
+
+    @keyframes spin { /*creates the spinning animation*/
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+/* Pokemon Card Styles */
+.card {
+    width: 85%;
+    max-width: 400px;
+    margin: 1rem auto;
+    padding: 1.2rem 1.2rem .8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: rgba(255,255,255,0.08);
+    border-radius: 1rem;
+    box-shadow: 0 0 10px rgba(238, 237, 237, 0.607);
+
+}
+
+.card-img-top {
+    width: 250px;
+    height: 250px;
+    object-fit: contain;
+    display: block;
+    margin: 4px auto 8px;
+}
+
+.card-title {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin: 1rem 0;
+
+}
+
+.list-group {
+    list-style-type: none; /* gets rid of the bullet symbol*
+    padding: 0;
+    margin: 0;
+}
+
+.list-group-item {
+  color: #fff;
+  font-size: 1.2rem;
+  padding: 5px 0;
 }
